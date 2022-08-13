@@ -1,0 +1,6 @@
+.postContainer {
+  margin: 10px;
+  display: flex;
+  border: 2px var(--accent) solid;
+  max-width: 400px;
+}
