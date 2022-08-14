@@ -1,13 +1,17 @@
 import React from "react";
-
-const PostHeader = ({ subreddit, author, created }) => {
+import { selectPostById } from "./postsSlice";
+import { useSelector } from "react-redux";
+import Subreddit from "./Subreddit";
+import TimeAgo from "./TimeAgo";
+import "./postHeader.css";
+const PostHeader = ({ postId }) => {
+  const post = useSelector((state) => selectPostById(state, postId));
+  console.log({ post });
   return (
-    <>
-      <p className="post-header">{`r/${subreddit} ${author} ${new Date(
-        created * 1000
-      )}`}</p>
-      
-    </>
+    <div className="post-header">
+      <Subreddit subreddit={post.subreddit} />
+      <TimeAgo epochTime={post.created} />
+    </div>
   );
 };
 

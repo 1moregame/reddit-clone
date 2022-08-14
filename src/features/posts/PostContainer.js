@@ -2,19 +2,19 @@ import React from "react";
 import PostHeader from "./PostHeader";
 import PostVoting from "./PostVoting";
 import PostTitle from "./PostTitle";
-import PostImage from "./PostImage";
+import PostMedia from "./PostMedia";
 import PostFooter from "./PostFooter";
 import "./postContainer.css";
 
-const PostContainer = ({ subreddit, title, author, created, ups }) => {
+const PostContainer = ({ postId }) => {
   return (
     <div className="postContainer">
-      <PostVoting />
+      <PostVoting postId={postId} />
       <div className="postContent">
-        <PostHeader {...{ subreddit, author, created }} />
-        <PostTitle {...{ title }} />
-        <PostImage />
-        <PostFooter />
+        <PostHeader postId={postId} />
+        <PostTitle postId={postId} />
+        <PostMedia postId={postId} />
+        <PostFooter postId={postId} />
       </div>
     </div>
   );
