@@ -1,8 +1,4 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  createSelector,
-} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const BASE_URL = "https://www.reddit.com/";
@@ -48,9 +44,9 @@ const postSlice = createSlice({
   },
 });
 
-export const getPostsError = (state) => state.posts.error;
-export const getPostsStatus = (state) => state.posts.status;
-export const getPageAfter = (state) => state.posts.after;
-export const getPosts = (state) => state.posts.data;
+export const selectPostsError = (state) => state.posts.error;
+export const selectPostsStatus = (state) => state.posts.status;
+export const selectPageAfter = (state) => state.posts.after;
+export const selectPosts = (state) => state.posts.data;
 
 export default postSlice.reducer;

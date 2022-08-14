@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const PostHeader = () => {
+const PostHeader = ({ subreddit, author, created }) => {
   return (
-    <div>PostHeader</div>
-  )
-}
+    <>
+      <p className="post-header">{`r/${subreddit} ${author} ${new Date(
+        created * 1000
+      )}`}</p>
+      
+    </>
+  );
+};
 
-export default PostHeader
+export default PostHeader;
