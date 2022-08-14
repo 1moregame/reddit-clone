@@ -6,7 +6,7 @@ import PostImage from "./PostImage";
 import PostFooter from "./PostFooter";
 import "./postContainer.css";
 
-const PostContainer = ({ subreddit, title, author, created }) => {
+const PostContainer = ({ subreddit, title, author, created, ups }) => {
   return (
     <div className="postContainer">
       <PostVoting />

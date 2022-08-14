@@ -1,14 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  createEntityAdapter,
+} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const BASE_URL = "https://www.reddit.com/";
 
-const initialState = {
-  data: [],
+const postsAdapter = createEntityAdapter({});
+
+const initialState = postsAdapter.getInitialState({
   status: "idle", // idle | loading | succeeded | failed
   error: null,
   after: "",
-};
+});
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
@@ -34,7 +39,10 @@ const postSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = action.payload.data.children;
+        let loadedPosts = action.payload.data.children.map((item) => {
+          return item.data;
+        });
+        postsAdapter.upsertMany(state, loadedPosts);
         state.after = action.payload.data.after;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
@@ -47,6 +55,11 @@ const postSlice = createSlice({
 export const selectPostsError = (state) => state.posts.error;
 export const selectPostsStatus = (state) => state.posts.status;
 export const selectPageAfter = (state) => state.posts.after;
-export const selectPosts = (state) => state.posts.data;
+
+export const {
+  selectAll: selectPosts,
+  selectById: selectPostById,
+  selectIds: selectPostIds,
+} = postsAdapter.getSelectors((state) => state.posts);
 
 export default postSlice.reducer;
