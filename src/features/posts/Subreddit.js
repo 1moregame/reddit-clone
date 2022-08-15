@@ -1,7 +1,11 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Subreddit = ({ subreddit }) => {
-  return <p className="subreddit">{`r/${subreddit}`}</p>;
+  return (
+    <Link to="/">
+      <p className="subreddit">{`r/${subreddit}`}</p>
+    </Link>
+  );
 };
 
 export default Subreddit;

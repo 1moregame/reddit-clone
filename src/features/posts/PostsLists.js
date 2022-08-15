@@ -13,6 +13,7 @@ const PostsLists = () => {
       return <PostContainer key={post.id} postId={post.id} />;
     });
   }
+  
 
   return <>Loading...</>;
 };

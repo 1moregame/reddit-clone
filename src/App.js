@@ -1,15 +1,15 @@
-import Header from "./Header";
-import { store } from "./app/store";
-import { fetchPosts } from "./features/posts/postsSlice";
+import Layout from "./Layout";
 import PostsLists from "./features/posts/PostsLists";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
-    
-    <div className="App">
-      <Header />
-      <PostsLists />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<PostsLists />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   );
 }
 

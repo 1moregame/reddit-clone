@@ -1,7 +1,62 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectPostById } from "./postsSlice";
+import { Link } from "react-router-dom";
 
-const PostMedia = () => {
-  return <div>PostMedia</div>;
+const PostMedia = ({ postId }) => {
+  const post = useSelector((state) => selectPostById(state, postId));
+
+  console.log(`Gallery: ${post.is_gallery}, hint: ${post.post_hint}`);
+
+  if (post.post_hint) {
+    switch (post.post_hint) {
+      case "image":
+        return <img className="post-image" src={post.url} />;
+      case "rich:video":
+        return (
+          <video
+            className="post-video"
+            src={post.preview.reddit_video_preview.fallback_url}
+            autoPlay
+            loop
+            controls
+            preload="auto"
+            playsInline
+            type="video/mp4"
+          />
+        );
+      case "hosted:video":
+        return (
+          <video
+            className="post-video"
+            src={post.media.reddit_video.fallback_url}
+            autoPlay
+            loop
+            controls
+            preload="auto"
+            playsInline
+            type="video/mp4"
+          />
+        );
+      case "link":
+        return (
+          <a href={post.url} target="_blank">
+            {post.url.slice(0, 25)}...
+          </a>
+        );
+      default:
+        return <>""</>;
+    }
+  } else if (post.is_gallery === true) {
+    return (
+      <img
+        className="post-image"
+        src={`https://i.redd.it/${post.gallery_data.items[0].media_id}.jpg`}
+      />
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default PostMedia;

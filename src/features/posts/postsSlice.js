@@ -18,11 +18,12 @@ const initialState = postsAdapter.getInitialState({
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
   async (endpoint) => {
-    const postURL = `${BASE_URL}r/${endpoint}.json`;
+    const postURL = `${BASE_URL}${endpoint}.json`;
     try {
       const response = await axios.get(postURL);
       return response.data;
     } catch (error) {
+      console.error(error.message);
       return error.message;
     }
   }
