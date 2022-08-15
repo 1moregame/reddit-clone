@@ -7,7 +7,7 @@ import { fetchPosts } from "./features/posts/postsSlice";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-store.dispatch(fetchPosts("r/photos"));
+store.dispatch(fetchPosts("r/askreddit"));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,9 +1,16 @@
-import React from 'react'
+import { selectPostById } from "./postsSlice";
+import { useSelector } from "react-redux";
 
-const PostVoting = () => {
+const PostVoting = ({ postId }) => {
+  const post = useSelector((state) => selectPostById(state, postId));
   return (
-    <div>PostVoting</div>
-  )
-}
+    <p className="post-score">
+      {new Intl.NumberFormat("en-US", {
+        notation: "compact",
+        compactDisplay: "short",
+      }).format(post.ups)}
+    </p>
+  );
+};
 
-export default PostVoting
+export default PostVoting;

@@ -7,6 +7,7 @@ import PostFooter from "./PostFooter";
 import "./postContainer.css";
 
 const PostContainer = ({ postId }) => {
+  
   return (
     <div className="postContainer">
       <PostVoting postId={postId} />

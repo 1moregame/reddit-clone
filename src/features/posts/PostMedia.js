@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 const PostMedia = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
 
-  console.log(`Gallery: ${post.is_gallery}, hint: ${post.post_hint}`);
-
   if (post.post_hint) {
     switch (post.post_hint) {
       case "image":

@@ -3,8 +3,7 @@
   display: flex;
   border: 2px var(--accent) solid;
   max-width: 400px;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding: 5px;
 }
 
 .postContent {
@@ -26,9 +25,30 @@
 
 .timeago {
   justify-self: flex-end;
+  color: var(--background-secondary);
 }
 
 .post-image,
 video {
   max-width: 100%;
+}
+
+.post-score {
+  color: var(--background-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 5px;
+  min-width: 3ch;
+}
+.post-footer {
+  color: var(--background-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: var(--background-secondary);
 }

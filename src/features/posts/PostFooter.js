@@ -1,9 +1,23 @@
-import React from 'react'
+import Author from "./Author";
+import { selectPostById } from "./postsSlice";
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 
-const PostFooter = () => {
+const PostFooter = ({ postId }) => {
+  const post = useSelector((state) => selectPostById(state, postId));
   return (
-    <div>PostFooter</div>
-  )
-}
+    <div className="post-footer">
+      <Author author={post.author} />
+      <p>
+        <FontAwesomeIcon icon={faComments} /> &nbsp;
+        {new Intl.NumberFormat("en-US", {
+          notation: "compact",
+          compactDisplay: "short",
+        }).format(post.num_comments)}
+      </p>
+    </div>
+  );
+};
 
-export default PostFooter
+export default PostFooter;
