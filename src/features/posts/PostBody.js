@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectPostById } from "./postsSlice";
 import { Link } from "react-router-dom";
 
-const PostMedia = ({ postId }) => {
+const PostBody = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
 
   if (post.post_hint) {
@@ -50,9 +50,11 @@ const PostMedia = ({ postId }) => {
         src={`https://i.redd.it/${post.gallery_data.items[0].media_id}.jpg`}
       />
     );
+  } else if (post.kind === "t1") {
+    return <p className="comment-body">{post.body}</p>;
   } else {
     return <></>;
   }
 };
 
-export default PostMedia;
+export default PostBody;

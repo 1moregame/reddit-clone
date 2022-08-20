@@ -10,7 +10,10 @@ const PostsLists = () => {
   if (status === "loading") {
     return <>Loading...</>;
   }
-  if (status === "succeeded") {
+  else if (status === "error") {
+    return <>Error...</>;
+  }
+  else if (status === "succeeded") {
     return posts.map((post) => {
       return <PostContainer key={post.id} postId={post.id} />;
     });

@@ -2,7 +2,7 @@ import React from "react";
 import PostHeader from "./PostHeader";
 import PostVoting from "./PostVoting";
 import PostTitle from "./PostTitle";
-import PostMedia from "./PostMedia";
+import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
 import "./postContainer.css";
 
@@ -13,7 +13,7 @@ const PostContainer = ({ postId }) => {
       <div className="postContent">
         <PostHeader postId={postId} />
         <PostTitle postId={postId} />
-        <PostMedia postId={postId} />
+        <PostBody postId={postId} />
         <PostFooter postId={postId} />
       </div>
     </article>

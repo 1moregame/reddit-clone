@@ -9,13 +9,15 @@ const PostFooter = ({ postId }) => {
   return (
     <div className="post-footer">
       <Author author={post.author} />
-      <p>
-        <FontAwesomeIcon icon={faComments} /> &nbsp;
-        {new Intl.NumberFormat("en-US", {
-          notation: "compact",
-          compactDisplay: "short",
-        }).format(post.num_comments)}
-      </p>
+      {post.kind !== "t1" && (
+        <p>
+          <FontAwesomeIcon icon={faComments} /> &nbsp;
+          {new Intl.NumberFormat("en-US", {
+            notation: "compact",
+            compactDisplay: "short",
+          }).format(post.num_comments)}
+        </p>
+      )}
     </div>
   );
 };

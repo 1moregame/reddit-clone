@@ -4,6 +4,7 @@
   border: 2px var(--accent) solid;
   max-width: 400px;
   padding: 5px;
+  color: var(--background-secondary);
 }
 
 .postContent {
@@ -31,7 +32,6 @@
 
 .timeago {
   justify-self: flex-end;
-  color: var(--background-secondary);
 }
 
 .post-image,
@@ -58,4 +58,11 @@ video {
 .postContainer a:visited {
   text-decoration: none;
   color: var(--background-secondary);
+}
+
+.comment-body {
+  background-color: var(--background);
+  color: black;
+  padding: 10px 5px;
+  margin: 5px;
 }

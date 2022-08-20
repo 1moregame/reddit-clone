@@ -8,7 +8,8 @@ const PostHeader = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
   return (
     <div className="post-header">
-      <Subreddit subreddit={post.subreddit} />
+      {post.kind === "t3" && <Subreddit subreddit={post.subreddit} />}
+      {post.kind === "t1" && <p className="comment-location">Comment in {post.link_title}</p>}
       <TimeAgo epochTime={post.created} />
     </div>
   );
