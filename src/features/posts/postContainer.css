@@ -9,7 +9,13 @@
 .postContent {
   width: 100%;
 }
-
+.media-link {
+  text-decoration: underline;
+  color: var(--accent-secondary);
+}
+.media-link:hover {
+  color: var(--accent);
+}
 .post-title {
   font-size: 1.1rem;
   font-weight: 600;
@@ -47,8 +53,9 @@ video {
   justify-content: space-between;
 }
 
-a,
-a:hover {
+.postContainer a,
+.postContainer a:hover,
+.postContainer a:visited {
   text-decoration: none;
   color: var(--background-secondary);
 }

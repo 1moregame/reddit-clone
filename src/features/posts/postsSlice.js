@@ -15,8 +15,8 @@ const initialState = postsAdapter.getInitialState({
   after: "",
 });
 
-export const fetchPosts = createAsyncThunk(
-  "posts/fetchPosts",
+export const fetchNewPosts = createAsyncThunk(
+  "posts/fetchNewPosts",
   async (endpoint) => {
     const postURL = `${BASE_URL}${endpoint}.json`;
     try {
@@ -35,18 +35,19 @@ const postSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPosts.pending, (state) => {
+      .addCase(fetchNewPosts.pending, (state) => {
+        postsAdapter.removeAll(state);
         state.status = "loading";
       })
-      .addCase(fetchPosts.fulfilled, (state, action) => {
+      .addCase(fetchNewPosts.fulfilled, (state, action) => {
         state.status = "succeeded";
         let loadedPosts = action.payload.data.children.map((item) => {
-          return item.data;
+          return { ...item.data, kind: item.kind };
         });
         postsAdapter.upsertMany(state, loadedPosts);
         state.after = action.payload.data.after;
       })
-      .addCase(fetchPosts.rejected, (state, action) => {
+      .addCase(fetchNewPosts.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import FilterBar from "./FilterBar";
 import Header from "./Header";
 const Layout = () => {
   return (
@@ -7,6 +8,7 @@ const Layout = () => {
         <Header />
       </header>
       <main className="App">
+        <FilterBar />
         <Outlet />
       </main>
     </>

@@ -5,4 +5,20 @@
   justify-content: space-between;
   background-color: var(--background);
   color: var(--accent-secondary);
+  width: 100%;
+}
+.logo {
+  transition: all 0.4s ease;
+}
+.logo:hover {
+  transition: all 0.4s ease;
+  transform: scaleX(-1);
+  color: var(--accent-secondary);
+  direction: rtl;
+}
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  color: var(--accent-secondary);
 }

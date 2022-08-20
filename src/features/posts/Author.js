@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Author = ({ author }) => {
+const User = ({ author }) => {
   return (
     <Link to={`author/${author}`}>
       <p className="author">Posted by: {`u/${author}`}</p>
@@ -9,4 +9,4 @@ const Author = ({ author }) => {
   );
 };
 
-export default Author;
+export default User;

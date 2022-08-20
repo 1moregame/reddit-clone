@@ -3,6 +3,9 @@
   --background-secondary: #505160;
   --accent: #598234;
   --accent-secondary: #aebd38;
+  display: flex;
+  justify-content: center;
+  
 }
 
 * {
@@ -17,10 +20,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+}
+header {
+  width: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-

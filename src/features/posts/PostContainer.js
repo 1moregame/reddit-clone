@@ -7,9 +7,8 @@ import PostFooter from "./PostFooter";
 import "./postContainer.css";
 
 const PostContainer = ({ postId }) => {
-  
   return (
-    <div className="postContainer">
+    <article className="postContainer">
       <PostVoting postId={postId} />
       <div className="postContent">
         <PostHeader postId={postId} />
@@ -17,7 +16,7 @@ const PostContainer = ({ postId }) => {
         <PostMedia postId={postId} />
         <PostFooter postId={postId} />
       </div>
-    </div>
+    </article>
   );
 };
 

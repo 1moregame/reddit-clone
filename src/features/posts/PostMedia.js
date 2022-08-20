@@ -19,7 +19,6 @@ const PostMedia = ({ postId }) => {
             loop
             controls
             preload="auto"
-            playsInline
             type="video/mp4"
           />
         );
@@ -32,13 +31,12 @@ const PostMedia = ({ postId }) => {
             loop
             controls
             preload="auto"
-            playsInline
             type="video/mp4"
           />
         );
       case "link":
         return (
-          <a href={post.url} target="_blank">
+          <a className="media-link" href={post.url} target="_blank">
             {post.url.slice(0, 25)}...
           </a>
         );
