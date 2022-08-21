@@ -10,11 +10,11 @@
 .postContent {
   width: 100%;
 }
-.media-link {
+a.media-link {
   text-decoration: underline;
   color: var(--accent-secondary);
 }
-.media-link:hover {
+a.media-link:hover {
   color: var(--accent);
 }
 .post-title {

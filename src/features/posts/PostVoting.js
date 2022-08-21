@@ -8,7 +8,7 @@ const PostVoting = ({ postId }) => {
       {new Intl.NumberFormat("en-US", {
         notation: "compact",
         compactDisplay: "short",
-      }).format(post.ups)}
+      }).format(post.score)}
     </p>
   );
 };

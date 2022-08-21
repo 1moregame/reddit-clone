@@ -15,18 +15,20 @@ const initialState = postsAdapter.getInitialState({
   after: "",
 });
 
+const getEndpoint = async (endpoint) => {
+  const postURL = `${BASE_URL}${endpoint}.json`;
+  try {
+    const response = await axios.get(postURL);
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
+  }
+};
+
 export const fetchNewPosts = createAsyncThunk(
   "posts/fetchNewPosts",
-  async (endpoint) => {
-    const postURL = `${BASE_URL}${endpoint}.json`;
-    try {
-      const response = await axios.get(postURL);
-      return response.data;
-    } catch (error) {
-      console.error(error.message);
-      return error.message;
-    }
-  }
+  getEndpoint
 );
 
 const postSlice = createSlice({
