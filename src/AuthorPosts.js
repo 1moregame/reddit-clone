@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { fetchNewPosts } from "./features/posts/postsSlice";
@@ -9,9 +9,12 @@ const AuthorPosts = () => {
   const { authorId } = useParams();
   const dispatch = useDispatch();
 
-  if (authorId) {
+  useEffect(() => {
     const endpoint = `user/${authorId}`;
     dispatch(fetchNewPosts(endpoint));
+  }, []);
+
+  if (authorId) {
     return <PostsLists />;
   }
 };
