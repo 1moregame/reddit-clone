@@ -5,7 +5,7 @@ import PostContainer from "./PostContainer";
 
 const PostPage = () => {
   const { postId } = useParams();
-
+  
   if (postId) {
     return (
       <>

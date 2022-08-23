@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     store.dispatch(fetchNewPosts("hot"));
   }, []);
-
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

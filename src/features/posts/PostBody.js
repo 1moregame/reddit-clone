@@ -14,7 +14,7 @@ const PostBody = ({ postId }) => {
         return (
           <video
             className="post-video"
-            src={post.preview.reddit_video_preview.fallback_url}
+            src={post.preview?.reddit_video_preview?.fallback_url}
             autoPlay
             loop
             controls
@@ -26,7 +26,7 @@ const PostBody = ({ postId }) => {
         return (
           <video
             className="post-video"
-            src={post.media.reddit_video.fallback_url}
+            src={post.media?.reddit_video.fallback_url}
             autoPlay
             loop
             controls

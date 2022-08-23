@@ -13,7 +13,7 @@ const PostContainer = ({ postId }) => {
       <PostVoting postId={postId} />
       <div className="postContent">
         <PostHeader postId={postId} />
-        <Link to={`post/${postId}`}>
+        <Link to={`/post/${postId}`}>
           <PostTitle postId={postId} />
         </Link>
         <PostBody postId={postId} />

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const User = ({ author }) => {
   return (
-    <Link to={`author/${author}`}>
+    <Link to={`/author/${author}`}>
       <p className="author">Posted by: {`u/${author}`}</p>
     </Link>
   );
