@@ -2,13 +2,16 @@ import Layout from "./Layout";
 import PostsLists from "./features/posts/PostsLists";
 import AuthorPosts from "./AuthorPosts";
 import PostPage from "./features/posts/PostPage";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchNewPosts } from "./features/posts/postsSlice";
 import { store } from "./app/store";
+import SubredditPosts from "./SubredditPosts";
 
 function App() {
+  let params = useParams();
   useEffect(() => {
+    if (params === "");
     store.dispatch(fetchNewPosts("hot"));
   }, []);
   return (
@@ -21,6 +24,9 @@ function App() {
         </Route>
         <Route path="post">
           <Route path=":postId" element={<PostPage />} />
+        </Route>
+        <Route path="subreddit">
+          <Route path=":subreddit" element={<SubredditPosts />} />
         </Route>
       </Route>
     </Routes>

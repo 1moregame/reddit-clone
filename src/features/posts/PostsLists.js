@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectPosts, selectPostsStatus } from "./postsSlice";
-
 import PostContainer from "./PostContainer";
+
 
 const PostsLists = () => {
   const status = useSelector(selectPostsStatus);

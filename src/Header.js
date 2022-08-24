@@ -1,14 +1,17 @@
 import React from "react";
 import Search from "./Search";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="header">
-      <Link to="/">
-        <h1 className="logo">tidder</h1>
-      </Link>
+      <h1 onClick={() => navigate("/", { state: null })} className="logo">
+        tidder
+      </h1>
+
       <Search />
     </div>
   );

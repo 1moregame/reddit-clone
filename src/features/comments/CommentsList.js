@@ -1,23 +1,12 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import {
-  selectCommentsStatus,
-  selectComments,
-  fetchComments,
-} from "./commentsSlice";
-import { useDispatch } from "react-redux";
+import { selectCommentsStatus, selectComments } from "./commentsSlice";
+
 import CommentContainer from "./CommentContainer";
 
-const CommentsList = ({ postId }) => {
-  const endpoint = `comments/${postId}`;
-  const dispatch = useDispatch();
+const CommentsList = () => {
   const status = useSelector(selectCommentsStatus);
   const comments = useSelector(selectComments);
-
-  useEffect(() => {
-    dispatch(fetchComments(endpoint));
-  }, [endpoint]);
 
   if (status === "loading") {
     return <>Loading...</>;
