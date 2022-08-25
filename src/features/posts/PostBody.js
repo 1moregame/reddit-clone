@@ -41,7 +41,7 @@ const PostBody = ({ postId }) => {
           </a>
         );
       default:
-        return <>""</>;
+        return <></>;
     }
   } else if (post.is_gallery === true) {
     return (
@@ -53,7 +53,7 @@ const PostBody = ({ postId }) => {
   } else if (post.kind === "t1") {
     return <p className="comment-body">{post.body}</p>;
   } else {
-    return <></>;
+    return <p>{post.selftext}</p>;
   }
 };
 

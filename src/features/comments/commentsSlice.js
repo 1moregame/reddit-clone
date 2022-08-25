@@ -16,7 +16,7 @@ const initialState = commentsAdapter.getInitialState({
 });
 
 const getEndpoint = async (endpoint) => {
-  const postURL = `${BASE_URL}${endpoint}.json`;
+  const postURL = `${BASE_URL}${endpoint}`;
   try {
     const response = await axios.get(postURL);
     return response.data;
