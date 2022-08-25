@@ -2,32 +2,51 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFireFlameCurved,
   faRankingStar,
-  faChartLine,
+  faHourglassStart,
 } from "@fortawesome/free-solid-svg-icons";
 import "./filterBar.css";
+import { setFilter } from "./features/posts/postsSlice";
+import { useDispatch } from "react-redux";
 
 const FilterBar = () => {
+  const dispatch = useDispatch();
+  const handleFilter = ({ currentTarget }) => {
+    if (currentTarget.classList.contains("selected")) {
+    } else {
+      let selectedElement = document.getElementsByClassName("selected")[0];
+      selectedElement.classList.remove("selected");
+      currentTarget.classList.add("selected");
+      dispatch(setFilter(currentTarget.firstChild.id));
+    }
+  };
   return (
     <div className="filter-bar">
-      <div className="icon-wrapper">
+      <div className="icon-wrapper selected" onClick={handleFilter}>
         <FontAwesomeIcon
+          className="icon"
           id="hot"
           aria-label="Hot Posts"
           icon={faFireFlameCurved}
         />
         <p className="title">HOT</p>
       </div>
-      <div className="icon-wrapper">
-        <FontAwesomeIcon id="top" aria-label="Top Posts" icon={faRankingStar} />
+      <div className="icon-wrapper" onClick={handleFilter}>
+        <FontAwesomeIcon
+          id="top"
+          className="icon"
+          aria-label="Top Posts"
+          icon={faRankingStar}
+        />
         <p className="title">TOP</p>
       </div>{" "}
-      <div className="icon-wrapper">
+      <div className="icon-wrapper" onClick={handleFilter}>
         <FontAwesomeIcon
-          id="rising"
-          aria-label="Rising Posts"
-          icon={faChartLine}
+          id="new"
+          className="icon"
+          aria-label="New Posts"
+          icon={faHourglassStart}
         />
-        <p className="title">rising</p>
+        <p className="title">new</p>
       </div>
     </div>
   );

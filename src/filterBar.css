@@ -4,7 +4,7 @@
   border: 2px var(--accent) solid;
   max-width: 400px;
   padding: 5px;
-  color: var(--accent-secondary);
+  color: var(--background-secondary);
   font-size: 2rem;
   display: flex;
   justify-content: space-evenly;
@@ -17,5 +17,17 @@
 .title {
   font-size: 0.65rem;
   font-variant-caps: all-small-caps;
+
+  color: var(--accent-secondary);
+}
+.icon:hover {
+  cursor: pointer;
+}
+
+.selected .title {
   color: var(--background-secondary);
+}
+
+.selected .icon {
+  color: var(--accent-secondary);
 }

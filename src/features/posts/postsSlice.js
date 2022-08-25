@@ -13,10 +13,16 @@ const initialState = postsAdapter.getInitialState({
   status: "idle", // idle | loading | succeeded | failed
   error: null,
   after: "",
+  filter: "hot", // hot | top | new
 });
 
 const getEndpoint = async (endpoint) => {
-  const postURL = `${BASE_URL}${endpoint}.json`;
+  let postURL = BASE_URL;
+  if (endpoint) {
+    postURL += `${endpoint}`;
+  }
+  console.log(postURL);
+
   try {
     const response = await axios.get(postURL);
     return response.data;
@@ -34,7 +40,11 @@ export const fetchNewPosts = createAsyncThunk(
 const postSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchNewPosts.pending, (state) => {
@@ -59,6 +69,7 @@ const postSlice = createSlice({
 export const selectPostsError = (state) => state.posts.error;
 export const selectPostsStatus = (state) => state.posts.status;
 export const selectPageAfter = (state) => state.posts.after;
+export const selectFilter = (state) => state.posts.filter;
 
 export const {
   selectAll: selectPosts,
@@ -67,3 +78,4 @@ export const {
 } = postsAdapter.getSelectors((state) => state.posts);
 
 export default postSlice.reducer;
+export const { setFilter } = postSlice.actions;
