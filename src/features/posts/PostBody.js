@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router";
 import { selectPostById } from "./postsSlice";
-import { Link } from "react-router-dom";
 
 const PostBody = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
-
+  const location = useLocation();
+  console.log(location);
   if (post.post_hint) {
     switch (post.post_hint) {
       case "image":
@@ -52,8 +53,10 @@ const PostBody = ({ postId }) => {
     );
   } else if (post.kind === "t1") {
     return <p className="comment-body">{post.body}</p>;
-  } else {
+  } else if (location.pathname !== "/") {
     return <p>{post.selftext}</p>;
+  } else {
+    <></>;
   }
 };
 
