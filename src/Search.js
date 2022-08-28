@@ -1,9 +1,11 @@
 import React from "react";
-import { useState } from "react";
-import './search.css'
+import { selectSearch, setSearch } from "./features/searchSlice";
+import { useDispatch, useSelector } from "react-redux";
+import "./search.css";
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const search = useSelector(selectSearch);
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
@@ -14,7 +16,7 @@ const Search = () => {
         type="search"
         placeholder="Search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => dispatch(setSearch(e.target.value))}
       />
     </form>
   );

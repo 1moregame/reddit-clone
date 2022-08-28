@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import CommentsList from "../comments/CommentsList";
 import PostContainer from "./PostContainer";
-import { fetchComments } from "../comments/commentsSlice";
+import {
+  fetchComments,
+  removeComments,
+  resetStatus,
+} from "../comments/commentsSlice";
 import { selectFilter } from "./postsSlice";
 
 const PostPage = () => {
@@ -13,11 +17,15 @@ const PostPage = () => {
   if (filter) {
     endpoint += `?sort=${filter}`;
   }
-  console.log(endpoint);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchComments(endpoint));
-  }, [postId, filter]);
+    return () => {
+      dispatch(removeComments());
+      dispatch(resetStatus());
+    };
+  }, [filter]);
 
   if (postId) {
     return (

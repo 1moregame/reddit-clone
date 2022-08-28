@@ -1,5 +1,4 @@
 import Layout from "./Layout";
-import PostsLists from "./features/posts/PostsLists";
 import AuthorPosts from "./AuthorPosts";
 import PostPage from "./features/posts/PostPage";
 import { Routes, Route, Navigate } from "react-router-dom";

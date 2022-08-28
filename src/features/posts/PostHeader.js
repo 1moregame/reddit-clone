@@ -12,7 +12,6 @@ const PostHeader = ({ postId }) => {
   let commentParent = "";
   if (post.kind === "t1") {
     commentParent = post.link_id.slice(3);
-    console.log(commentParent);
   }
 
   return (
@@ -22,7 +21,8 @@ const PostHeader = ({ postId }) => {
         {post.kind === "t3" && <Subreddit subreddit={post.subreddit} />}
         {post.kind === "t1" && (
           <p className="comment-location">
-            Comment in <Link to={`/post/${commentParent}`}>{post.link_title}</Link>
+            Comment in{" "}
+            <Link to={`/post/${commentParent}`}>{post.link_title}</Link>
           </p>
         )}
       </div>

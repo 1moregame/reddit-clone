@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className="header">
       <h1 onClick={() => navigate("/", { state: null })} className="logo">
-        tidder
+        tibber
       </h1>
 
       <Search />

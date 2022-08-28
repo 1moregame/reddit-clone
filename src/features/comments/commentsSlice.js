@@ -33,7 +33,14 @@ export const fetchComments = createAsyncThunk(
 const commentsSlice = createSlice({
   name: "comments",
   initialState,
-  reducers: {},
+  reducers: {
+    removeComments: (state) => {
+      commentsAdapter.removeAll(state);
+    },
+    resetStatus: (state) => {
+      state.status = "idle";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchComments.pending, (state) => {
@@ -66,3 +73,5 @@ export const {
 } = commentsAdapter.getSelectors((state) => state.comments);
 
 export default commentsSlice.reducer;
+
+export const { removeComments, resetStatus } = commentsSlice.actions;
