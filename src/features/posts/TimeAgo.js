@@ -1,4 +1,4 @@
-import { formatDistanceToNowStrict, parseISO } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 
 const TimeAgo = ({ epochTime }) => {
   const MILLISECONDS = 1000;

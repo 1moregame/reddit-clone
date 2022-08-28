@@ -16,7 +16,7 @@ const SubredditPosts = () => {
       endpoint += `/${filter}.json`;
     }
     dispatch(fetchNewPosts(endpoint));
-  }, [filter]);
+  }, [dispatch, subreddit, filter]);
 
   if (subreddit) {
     return <PostsLists />;

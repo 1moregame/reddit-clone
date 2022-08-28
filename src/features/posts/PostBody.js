@@ -10,7 +10,7 @@ const PostBody = ({ postId }) => {
   if (post.post_hint) {
     switch (post.post_hint) {
       case "image":
-        return <img className="post-image" src={post.url} />;
+        return <img className="post-image" alt={post.id} src={post.url} />;
       case "rich:video":
         return (
           <video
@@ -37,7 +37,12 @@ const PostBody = ({ postId }) => {
         );
       case "link":
         return (
-          <a className="media-link" href={post.url} target="_blank">
+          <a
+            className="media-link"
+            href={post.url}
+            target="_blank"
+            rel="noreferrer"
+          >
             {post.url.slice(0, 25)}...
           </a>
         );

@@ -16,7 +16,7 @@ const AuthorPosts = () => {
       endpoint += `?sort=${filter}`;
     }
     dispatch(fetchNewPosts(endpoint));
-  }, [filter]);
+  }, [authorId, dispatch, filter]);
 
   if (authorId) {
     return <PostsLists />;

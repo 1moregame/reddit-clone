@@ -12,7 +12,7 @@ const MainPosts = () => {
   useEffect(() => {
     let endpoint = `${filter}.json`;
     dispatch(fetchNewPosts(endpoint));
-  }, [filter]);
+  }, [dispatch, filter]);
 
   return <PostsLists />;
 };
