@@ -21,7 +21,6 @@ const getEndpoint = async (endpoint) => {
   if (endpoint) {
     postURL += `${endpoint}`;
   }
-  console.log(postURL);
 
   try {
     const response = await axios.get(postURL);

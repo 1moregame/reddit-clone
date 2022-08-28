@@ -13,13 +13,13 @@ const PostPage = () => {
   if (filter) {
     endpoint += `?sort=${filter}`;
   }
+  console.log(endpoint);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchComments(endpoint));
   }, [postId, filter]);
 
   if (postId) {
-    console.log(postId);
     return (
       <>
         <PostContainer postId={postId} />

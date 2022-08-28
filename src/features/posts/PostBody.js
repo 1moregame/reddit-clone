@@ -6,7 +6,7 @@ import { selectPostById } from "./postsSlice";
 const PostBody = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
   const location = useLocation();
-  console.log(location);
+
   if (post.post_hint) {
     switch (post.post_hint) {
       case "image":

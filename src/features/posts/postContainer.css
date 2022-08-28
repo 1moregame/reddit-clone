@@ -29,6 +29,11 @@ a.media-link:hover {
   font-size: 0.85rem;
   width: 100%;
 }
+.post-header .left {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
 
 .timeago {
   justify-self: flex-end;

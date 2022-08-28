@@ -4,17 +4,29 @@ import { useSelector } from "react-redux";
 import Subreddit from "./Subreddit";
 import TimeAgo from "./TimeAgo";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbtack } from "@fortawesome/free-solid-svg-icons";
 
 const PostHeader = ({ postId }) => {
   const post = useSelector((state) => selectPostById(state, postId));
+  let commentParent = "";
+  if (post.kind === "t1") {
+    commentParent = post.link_id.slice(3);
+    console.log(commentParent);
+  }
+
   return (
     <div className="post-header">
-      {post.kind === "t3" && <Subreddit subreddit={post.subreddit} />}
-      {post.kind === "t1" && (
-        <p className="comment-location">
-          Comment in <Link to={`/post/${postId}`}>{post.link_title}</Link>
-        </p>
-      )}
+      <div className="left">
+        {post.pinned && <FontAwesomeIcon icon={faThumbtack} />}
+        {post.kind === "t3" && <Subreddit subreddit={post.subreddit} />}
+        {post.kind === "t1" && (
+          <p className="comment-location">
+            Comment in <Link to={`/post/${commentParent}`}>{post.link_title}</Link>
+          </p>
+        )}
+      </div>
+
       <TimeAgo epochTime={post.created} />
     </div>
   );

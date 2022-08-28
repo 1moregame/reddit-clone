@@ -10,7 +10,7 @@ const CommentsList = () => {
 
   if (status === "loading") {
     return <>Loading...</>;
-  } else if (status === "error") {
+  } else if (status === "failed") {
     return <>Error...</>;
   } else if (status === "succeeded") {
     return comments.map((comment) => {
