@@ -53,6 +53,7 @@ const PostBody = ({ postId }) => {
     return (
       <img
         className="post-image"
+        alt={post.id}
         src={`https://i.redd.it/${post.gallery_data.items[0].media_id}.jpg`}
       />
     );
