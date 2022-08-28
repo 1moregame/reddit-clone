@@ -25,7 +25,7 @@ const PostPage = () => {
       dispatch(removeComments());
       dispatch(resetStatus());
     };
-  }, [filter]);
+  }, [dispatch, endpoint, filter]);
 
   if (postId) {
     return (

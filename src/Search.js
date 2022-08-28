@@ -11,7 +11,7 @@ const Search = () => {
 
   useEffect(() => {
     dispatch(setSearch(""));
-  }, [location]);
+  }, [dispatch, location]);
 
   return (
     <form onSubmit={(e) => e.preventDefault()}>
